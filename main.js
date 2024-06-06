@@ -17,13 +17,18 @@ const createWindow = () => {
     ...winState.winOptions, // 自定义窗口状态
     webPreferences: {
       preload: path.join(__dirname, './preload/index.js'), // 预加载
-    }
+    },
+    show: false,
   })
   winState.manage(win)
   win.loadURL('http://localhost:3000')
 
   // 打开开发者工具
   win.webContents.openDevTools()
+
+  win.on('ready-to-show', () => {
+    win.show()
+  })
 }
 
 app.whenReady().then(() => {
