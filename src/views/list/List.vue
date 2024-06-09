@@ -1,10 +1,20 @@
 <script setup>
-import { ref, reactive } from 'vue'
-import { storeToRefs } from 'pinia'
-import useWebsiteStore from '@/store/websiteStore.js'
-const websiteStore = useWebsiteStore()
-const { websites } = storeToRefs(websiteStore)
-const { deleteItem } = websiteStore
+import { watch } from 'vue'
+
+import useWebsite from "./useWebsites"
+import useIndex from "./useIndex"
+
+const { websites, deleteItem } = useWebsite()
+const { isSelectedIndex, handleClickReadItem } = useIndex()
+
+// 监听 websites 变化的函数
+watch(
+  websites,
+  (newValue, oldValue) => {
+    isSelectedIndex.value = -1
+  },
+  { deep: true } // 深度监听
+)
 
 </script>
 
@@ -12,10 +22,10 @@ const { deleteItem } = websiteStore
   <div class="list-wrap">
     <p v-if="websites.length < 1" id="no-item">暂无数据</p>
     <div v-else id="items">
-      <div class="read-item selected" v-for="ws in websites" :key="ws.url">
+      <div class="read-item" :class="{selected:isSelectedIndex==wsIndex}" @click="handleClickReadItem(wsIndex)" v-for="(ws,wsIndex) in websites" :key="ws.url">
         <img :src="ws.screenshot" :alt="ws.title">
         <h2>{{ ws.title }}</h2>
-        <button @click="deleteItem(ws.url)">X</button>
+        <button @click.stop="deleteItem(ws.url)">X</button>
       </div>
     </div>
   </div>

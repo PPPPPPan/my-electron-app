@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import store from "store2"
-import _, { result } from "lodash"
 
 
 const useWebsiteStore = defineStore('websiteStore', {
