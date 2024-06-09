@@ -1,14 +1,24 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, provide } from 'vue'
+import Home from "./views/Home.vue"
+
+// 窗口显示状态
+const isShow = ref(false)
+const setIsShow = (value) => {
+  isShow.value = value
+}
+provide('dialog-visible', {
+  isShow,
+  setIsShow
+})
 
 </script>
 
 <template>
   <div>
-    hello
+    <Home></Home>
   </div>
 </template>
 
 <style lang="css">
-
 </style>

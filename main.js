@@ -1,6 +1,8 @@
 const { app, BrowserWindow } = require("electron")
 const WinState = require("electron-win-state").default
 const path = require('path')
+  // 获取网站的截图
+require('./controller/getSource.js')
 
 const createWindow = () => {
   const winState = new WinState({
