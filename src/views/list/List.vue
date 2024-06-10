@@ -4,7 +4,7 @@ import { watch } from 'vue'
 import useWebsite from "./useWebsites"
 import useIndex from "./useIndex"
 
-const { websites, deleteItem } = useWebsite()
+const { websites, deleteItem, keyWrods, find } = useWebsite()
 const { isSelectedIndex, handleClickReadItem } = useIndex()
 
 // 监听 websites 变化的函数
@@ -20,9 +20,9 @@ watch(
 
 <template>
   <div class="list-wrap">
-    <p v-if="websites.length < 1" id="no-item">暂无数据</p>
+    <p v-if="find(keyWrods).length < 1" id="no-item">暂无数据</p>
     <div v-else id="items">
-      <div class="read-item" :class="{selected:isSelectedIndex==wsIndex}" @click="handleClickReadItem(wsIndex)" v-for="(ws,wsIndex) in websites" :key="ws.url">
+      <div class="read-item" :class="{selected:isSelectedIndex==wsIndex}" @click="handleClickReadItem(wsIndex,ws.url)" v-for="(ws,wsIndex) in find(keyWrods)" :key="ws.url">
         <img :src="ws.screenshot" :alt="ws.title">
         <h2>{{ ws.title }}</h2>
         <button @click.stop="deleteItem(ws.url)">X</button>

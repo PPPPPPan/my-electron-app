@@ -1,10 +1,17 @@
 <script setup>
 import { inject } from 'vue'
+import _ from 'lodash'
 
 const { setIsShow } = inject('dialog-visible')
 const handleClick = () => {
   setIsShow(true)
 }
+
+const { setKeyWrods } = inject('searchbar-keywrods')
+const search = _.debounce((e) => {
+  let keyWrods = e.target.value
+  setKeyWrods(keyWrods)
+}, 500)
 
 </script>
 
@@ -12,7 +19,7 @@ const handleClick = () => {
   <div class="search-container">
     <div class="button" @click="handleClick">+</div>
     <div class="input">
-      <input type="text" placeholder="请输入关键字...">
+      <input @keyup="search" type="text" placeholder="请输入关键字...">
     </div>
   </div>
 </template>

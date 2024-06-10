@@ -26,6 +26,17 @@ const useWebsiteStore = defineStore('websiteStore', {
       })
       store('websites', this.websites)
     }
+  },
+  getters: {
+    find() {
+      return (keyWords) => {
+        return this.websites.filter(item => {
+          let patten = new RegExp(keyWords, 'i')
+          return patten.test(item.title)
+          // return item.title.includes(keyWords)
+        })
+      }
+    }
   }
 })
 

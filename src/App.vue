@@ -12,6 +12,15 @@ provide('dialog-visible', {
   setIsShow
 })
 
+const keyWrods = ref('')
+const setKeyWrods = (newValue) => {
+  keyWrods.value = newValue
+}
+provide('searchbar-keywrods', {
+  keyWrods,
+  setKeyWrods
+})
+
 </script>
 
 <template>

@@ -30,7 +30,7 @@ watch(isShow, () => {
   <div v-if="isShow" class="dialog-wrap">
     <div class="content">
       <div class="input">
-        <input v-model="url" :disabled="isSubmit" type="text" placeholder="请输入网址...">
+        <input v-model="url" @keyup.enter="handleAddClick" :disabled="isSubmit" type="text" placeholder="请输入网址...">
       </div>
       <div class="btns">
         <button :disabled="isSubmit" @click="handleAddClick">添加</button>
