@@ -1,6 +1,7 @@
 <script setup>
 import { ref, reactive, provide } from 'vue'
 import Home from "./views/Home.vue"
+import Header from "./views/Header.vue"
 
 // 窗口显示状态
 const isShow = ref(false)
@@ -24,9 +25,8 @@ provide('searchbar-keywrods', {
 </script>
 
 <template>
-  <div>
-    <Home></Home>
-  </div>
+  <Header></Header>
+  <router-view></router-view>
 </template>
 
 <style lang="css">
