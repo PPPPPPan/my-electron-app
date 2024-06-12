@@ -5,6 +5,8 @@ const path = require('path')
 require('./controller/getSource.js')
 // 消息弹窗
 require('./controller/alert.js')
+// 打开新窗口
+require('./controller/openWindow.js')
 
 const createWindow = () => {
   const winState = new WinState({
