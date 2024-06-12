@@ -1,5 +1,7 @@
 const { app, ipcMain, BrowserWindow, createWindow } = require('electron')
 const path = require('path')
+// 保存图片
+const saveas = require('../controller/saveas.js')
 
 const cssText = `height:30px;border-radius:5px;text-aligin:center;line-height:30px;z-index:99;position:fixed;right:50px;bottom:200px;border:1px solid red;background-color:cornflowerblue;`
 
@@ -31,7 +33,7 @@ ipcMain.handle('on-open-event', (e, url) => {
 
 
   win.webContents.on('context-menu', (e, args) => {
-    console.log('args : >>>>>>>>>>>>>>>>', args)
+    saveas(args)
   })
 })
 
