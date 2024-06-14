@@ -6,6 +6,7 @@ const { setIsShow } = inject('dialog-visible')
 const handleClick = () => {
   setIsShow(true)
 }
+defineExpose({ handleClick })
 
 const { setKeyWrods } = inject('searchbar-keywrods')
 const search = _.debounce((e) => {

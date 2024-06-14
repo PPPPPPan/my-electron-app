@@ -9,6 +9,8 @@ require('./controller/alert.js')
 require('./controller/openWindow.js')
 // 读取文件
 require('./controller/getFileList.js')
+// 菜单
+require('./controller/buildMenu.js')
 
 const createWindow = () => {
   const winState = new WinState({
