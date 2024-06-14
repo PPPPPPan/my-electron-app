@@ -35,7 +35,7 @@ const createWindow = () => {
   win.loadURL('http://localhost:3000')
 
   // 打开开发者工具
-  win.webContents.openDevTools()
+  // win.webContents.openDevTools()
 
   win.on('ready-to-show', () => {
     win.show()
