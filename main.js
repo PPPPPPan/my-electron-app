@@ -7,6 +7,8 @@ require('./controller/getSource.js')
 require('./controller/alert.js')
 // 打开新窗口
 require('./controller/openWindow.js')
+// 读取文件
+require('./controller/getFileList.js')
 
 const createWindow = () => {
   const winState = new WinState({
