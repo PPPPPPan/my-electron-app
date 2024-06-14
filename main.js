@@ -1,5 +1,5 @@
 const { app, BrowserWindow } = require("electron")
-const WinState = require("electron-win-state").default
+// const WinState = require("electron-win-state").default
 const path = require('path')
 const createTray = require("./tray.js")
 // 获取网站的截图
@@ -14,25 +14,26 @@ require('./controller/getFileList.js')
 require('./controller/buildMenu.js')
 
 const createWindow = () => {
-  const winState = new WinState({
-    // defaultWidth: 1000,
-    // defaultHeight: 600,
-    // defaultX: 100,
-    // defaultY: 100,
-  })
+  // const winState = new WinState({
+  //   // defaultWidth: 1000,
+  //   // defaultHeight: 600,
+  //   // defaultX: 100,
+  //   // defaultY: 100,
+  // })
   const win = new BrowserWindow({
     width: 1000,
     height: 800,
     x: 100,
     y: 100,
-    ...winState.winOptions, // 自定义窗口状态
+    // ...winState.winOptions, // 自定义窗口状态
     webPreferences: {
       preload: path.join(__dirname, './preload/index.js'), // 预加载
     },
     show: false,
   })
-  winState.manage(win)
+  // winState.manage(win)
   win.loadURL('http://localhost:3000')
+  // win.loadURL(`file://${path.join(__dirname, "./dist/index.html")}`)
 
   // 打开开发者工具
   // win.webContents.openDevTools()
