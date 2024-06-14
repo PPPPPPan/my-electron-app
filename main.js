@@ -1,6 +1,7 @@
 const { app, BrowserWindow } = require("electron")
 const WinState = require("electron-win-state").default
 const path = require('path')
+const createTray = require("./tray.js")
 // 获取网站的截图
 require('./controller/getSource.js')
 // 消息弹窗
@@ -39,6 +40,8 @@ const createWindow = () => {
   win.on('ready-to-show', () => {
     win.show()
   })
+
+  createTray(win)
 }
 
 app.whenReady().then(() => {
